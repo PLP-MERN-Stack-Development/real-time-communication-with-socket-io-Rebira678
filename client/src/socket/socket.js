@@ -1,10 +1,10 @@
 // socket.js - Socket.io client setup
 
-import { io } from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import { io } from "socket.io-client";
+import { useEffect, useState } from "react";
 
 // Socket.io connection URL
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || "http://localhost:5000";
 
 // Create socket instance
 export const socket = io(SOCKET_URL, {
@@ -26,7 +26,7 @@ export const useSocket = () => {
   const connect = (username) => {
     socket.connect();
     if (username) {
-      socket.emit('user_join', username);
+      socket.emit("user_join", username);
     }
   };
 
@@ -37,17 +37,17 @@ export const useSocket = () => {
 
   // Send a message
   const sendMessage = (message) => {
-    socket.emit('send_message', { message });
+    socket.emit("send_message", { message });
   };
 
   // Send a private message
   const sendPrivateMessage = (to, message) => {
-    socket.emit('private_message', { to, message });
+    socket.emit("private_message", { to, message });
   };
 
   // Set typing status
   const setTyping = (isTyping) => {
-    socket.emit('typing', isTyping);
+    socket.emit("typing", isTyping);
   };
 
   // Socket event listeners
@@ -109,25 +109,25 @@ export const useSocket = () => {
     };
 
     // Register event listeners
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-    socket.on('receive_message', onReceiveMessage);
-    socket.on('private_message', onPrivateMessage);
-    socket.on('user_list', onUserList);
-    socket.on('user_joined', onUserJoined);
-    socket.on('user_left', onUserLeft);
-    socket.on('typing_users', onTypingUsers);
+    socket.on("connect", onConnect);
+    socket.on("disconnect", onDisconnect);
+    socket.on("receive_message", onReceiveMessage);
+    socket.on("private_message", onPrivateMessage);
+    socket.on("user_list", onUserList);
+    socket.on("user_joined", onUserJoined);
+    socket.on("user_left", onUserLeft);
+    socket.on("typing_users", onTypingUsers);
 
     // Clean up event listeners
     return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-      socket.off('receive_message', onReceiveMessage);
-      socket.off('private_message', onPrivateMessage);
-      socket.off('user_list', onUserList);
-      socket.off('user_joined', onUserJoined);
-      socket.off('user_left', onUserLeft);
-      socket.off('typing_users', onTypingUsers);
+      socket.off("connect", onConnect);
+      socket.off("disconnect", onDisconnect);
+      socket.off("receive_message", onReceiveMessage);
+      socket.off("private_message", onPrivateMessage);
+      socket.off("user_list", onUserList);
+      socket.off("user_joined", onUserJoined);
+      socket.off("user_left", onUserLeft);
+      socket.off("typing_users", onTypingUsers);
     };
   }, []);
 
@@ -146,4 +146,4 @@ export const useSocket = () => {
   };
 };
 
-export default socket; 
+export default socket;
