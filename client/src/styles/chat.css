@@ -1,0 +1,27 @@
+/* src/styles/chat.css */
+
+.chat-window {
+  height: 400px;
+  overflow-y: scroll;
+  background-color: #f8f9fa;
+}
+
+.chat-bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  max-width: 75%;
+  word-wrap: break-word;
+}
+
+.own-message {
+  background-color: #0d6efd;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+.other-message {
+  background-color: #e9ecef;
+  margin-right: auto;
+  text-align: left;
+}

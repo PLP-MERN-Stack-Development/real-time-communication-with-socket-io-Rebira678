@@ -1,0 +1,10 @@
+/* src/styles/login.css */
+.login-page {
+  height: 100vh;
+  background: linear-gradient(to right, #f5f2f7, #e4e6ea);
+}
+
+.login-card {
+  background: white;
+  width: 350px;
+}
